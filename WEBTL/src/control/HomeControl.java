@@ -40,10 +40,12 @@ public class HomeControl extends HttpServlet {
         DAO dao = new DAO();
         List<Product> list = dao.getTop3();
         List<Product> list1234 = dao.getProductByCIDLoad();
+        List<Product> list5 = dao.getProductLikedLoad();
         List<Category> listC = dao.getAllCategory();
         Product last = dao.getLast();
         
         //b2: set data to jsp
+        request.setAttribute("list5", list5);
         request.setAttribute("list1234", list1234);
         request.setAttribute("listP", list);
         request.setAttribute("listCC", listC);
