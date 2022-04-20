@@ -45,7 +45,7 @@ public class CategoryControl extends HttpServlet {
         
         
         
-        request.setAttribute("listP", list);
+        request.setAttribute("list1234", list);
         request.setAttribute("listCC", listC);
         request.setAttribute("p", last);
         request.setAttribute("tag", cateID);

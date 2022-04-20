@@ -43,7 +43,7 @@ public class SearchControl extends HttpServlet {
         List<Category> listC = dao.getAllCategory();
         Product last = dao.getLast();
         
-        request.setAttribute("listP", list);
+        request.setAttribute("list1234", list);
         request.setAttribute("listCC", listC);
         request.setAttribute("p", last);
         request.setAttribute("txtS", txtSearch);

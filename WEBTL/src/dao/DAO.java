@@ -238,7 +238,8 @@ public class DAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Category(rs.getInt(1),
-                        rs.getString(2)));
+                        rs.getString(2),
+                        rs.getString(3)));
             }
         } catch (Exception e) {
         }

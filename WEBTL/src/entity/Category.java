@@ -12,16 +12,25 @@ package entity;
 public class Category {
     private int cid;
     private String cname;
-
+    private String cimage;
     public Category() {
     }
 
-    public Category(int cid, String cname) {
+    public Category(int cid, String cname,String cimage) {
         this.cid = cid;
         this.cname = cname;
+        this.cimage = cimage;
     }
 
-    public int getCid() {
+    public String getCimage() {
+		return cimage;
+	}
+
+	public void setCimage(String cimage) {
+		this.cimage = cimage;
+	}
+
+	public int getCid() {
         return cid;
     }
 
@@ -38,8 +47,8 @@ public class Category {
     }
 
     @Override
-    public String toString() {
-        return "Category{" + "cid=" + cid + ", cname=" + cname + '}';
-    }
+	public String toString() {
+		return "Category [cid=" + cid + ", cname=" + cname + ", cimage=" + cimage + "]";
+	}
     
 }

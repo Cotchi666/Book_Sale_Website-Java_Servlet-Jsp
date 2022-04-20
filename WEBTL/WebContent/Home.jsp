@@ -243,27 +243,14 @@
 						<nav class="product__sidebar-list">
 
 							<div class="row">
+							 <c:forEach items="${listCC}" var="o">
 								<div class="product__sidebar-item col-lg-6">
 									<img
-										src="images1/product/【グラブル】「炭治郎&禰豆子&善逸&伊之助」の評価_性能検証｜鬼滅コラボ【グランブルーファンタジー】 - ゲームウィズ(GameWith).jfif"
-										alt="" class="product__sidebar-item-img"> <a href=""
-										class="product__sidebar-item-name">Manga</a>
+										src="${o.cimage}"
+										alt="" class="product__sidebar-item-img"> <a href="category?cid=${o.cid}"
+										class="product__sidebar-item-name">${o.cname}</a>
 								</div>
-								<div class="product__sidebar-item col-lg-6">
-									<img src="images1/product/My Anime For Life.jfif"
-										class="product__sidebar-item-img"> <a href=""
-										class="product__sidebar-item-name">Series Manga</a>
-								</div>
-								<div class="product__sidebar-item col-lg-6">
-									<img src="images1/product/twd2_biaao_demo.jpg" alt=""
-										class="product__sidebar-item-img"> <a href=""
-										class="product__sidebar-item-name">Comics</a>
-								</div>
-								<div class="product__sidebar-item col-lg-6">
-									<img src="images1/product/8936054081882.jpg" alt=""
-										class="product__sidebar-item-img"> <a href=""
-										class="product__sidebar-item-name">Truyện tranh Việt Nam</a>
-								</div>
+								 </c:forEach>
 							</div>
 						</nav>
 
@@ -502,11 +489,11 @@
 
 
 
-
+<!--  
 	<div class="main__modal">
 		<div class="modal__overlay"></div>
 		<div class="modal__body">
-			<!-- resgist form -->
+			
 			<div class="sale-off">
 				<div class="sale-off__container">
 					<h2 class="sale-off__heading">
@@ -524,14 +511,43 @@
 				</div>
 
 				<div class="sale-off__close">
-					<!-- <svg class="sale-off__close-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg> -->
+					 <svg class="sale-off__close-icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times fa-w-11" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+					 <path fill="currentColor" 
+					 d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48
+					 l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.2
+					 8-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9
+					 .21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 32
+					 2.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+					 </path></svg> 
 					x
 				</div>
 			</div>
 		</div>
+		
 	</div>
+	-->
 	</div>
 	<script src="js/jq.js"></script>
 	<script src="js/index.js"></script>
+	        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+                        function loadMore() {
+                            var amount = document.getElementsByClassName("product").length;
+                            $.ajax({
+                                url: "/WEBTL/load",
+                                type: "get", //send it through get method
+                                data: {
+                                    exits: amount
+                                },
+                                success: function (data) {
+                                    var row = document.getElementById("content");
+                                    row.innerHTML += data;
+                                },
+                                error: function (xhr) {
+                                    //Do Something to handle error
+                                }
+                            });
+                        }
+        </script>  
 </body>
 </html>
