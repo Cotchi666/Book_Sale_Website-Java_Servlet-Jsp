@@ -291,7 +291,7 @@
 											<img src="${o.image}" alt="" class="product__panel-img">
 										</div>
 										<h3 class="product__panel-heading">
-											<a href="product.html" class="product__panel-link">${o.name}</a>
+											<a href="detail?pid=${o.id}" class="product__panel-link">${o.name}</a>
 										</h3>
 										<div class="product__panel-rate-wrap">
 											<i class="fas fa-star product__panel-rate"></i> <i
@@ -336,7 +336,7 @@
 								<img src="${o.image}" alt="" class="product__panel-img">
 							</div>
 							<h3 class="product__panel-heading">
-								<a href="#" class="product__panel-link">${o.name}</a>
+								<a href="detail?pid=${o.id}" class="product__panel-link">${o.name}</a>
 							</h3>
 							<div class="product__panel-rate-wrap">
 								<i class="fas fa-star product__panel-rate"></i> <i
