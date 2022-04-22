@@ -1,7 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,27 +61,29 @@
 				<div class="col-3 cart__head-quantity">Số lượng</div>
 				<div class="col-3 cart__head-price">Đơn giá</div>
 			</article>
-
-			<c:forEach items="${list}" var="o">
+								
+			<c:forEach items="${order.items}" var="o">
+			
+			<h1>${fn:length(order.items)} </h1>
 				<article class="row cart__body">
 					<div class="col-6 cart__body-name">
 						<div class="cart__body-name-img">
-							<img src="${o.image}">
+							<img src="${o.product.image}">
 						</div>
-						<a href="" class="cart__body-name-title"> ${o.name} </a>
+						<a href="" class="cart__body-name-title"> ${o.product.name} </a>
 					</div>
 					<div class="col-3 cart__body-quantity">
 					
 						<input type="button" value="-" class="cart__body-quantity-minus">
 						
-						<input type="number" step="1" min="1" max="999" value="2"
+						<input type="number" step="1" min="1" max="999" value="${o.quantity }"
 							class="cart__body-quantity-total"> 
 							
 						<input type="button" value="+" class="cart__body-quantity-plus">
 						
 					</div>
 					<div class="col-3 cart__body-price">
-						<span>${o.price} $</span> <a href="remove?id=${o.id}">Xóa</a>
+						<span>${o.product.price} $</span> <a href="remove?id=${o.product.id}">Xóa</a>
 					</div>
 				</article>
 			</c:forEach>
@@ -93,7 +97,7 @@
 				<span class="col-3 col-lg-3 col-sm-3 cart__foot-price">
 					${total} <br>
 
-					<button class="cart__foot-price-btn">Mua hàng</button>
+					<a href="order"class="cart__foot-price-btn">Mua hàng</a>
 				</span>
 			</article>
 		</div>
