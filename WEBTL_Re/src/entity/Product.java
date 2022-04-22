@@ -16,7 +16,7 @@ public class Product {
     private double price;
     private String title;
     private String description;
-
+    private int amount;
     public Product() {
     }
 
@@ -29,7 +29,26 @@ public class Product {
         this.description = description;
     }
 
-    public int getId() {
+    public Product(int id, String name, String image, double price, String title, String description, int amount) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.image = image;
+		this.price = price;
+		this.title = title;
+		this.description = description;
+		this.amount = amount;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public int getId() {
         return id;
     }
 

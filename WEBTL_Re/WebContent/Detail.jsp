@@ -101,8 +101,7 @@
                                 </div>-->
 
 								<div class="product__main-info-cart-btn-wrap">
-									<button class="product__main-info-cart-btn">Thêm vào
-										giỏ hàng</button>
+									<a href="cart?id=${detail.id}" class="product__main-info-cart-btn">Thêm vào giỏ hàng</a>
 								</div>
 							</div>
 

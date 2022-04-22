@@ -303,10 +303,10 @@
 
 										<div class="product__panel-price">
 											<span class="product__panel-price-old"> </span> <span
-												class="product__panel-price-current"> ${o.price}đ </span>
+												class="product__panel-price-current"> ${o.price} đ </span>
 										</div>
 
-										<div class="product__panel-price-sale-off">-11%</div>
+										<div class="product__panel-price-sale-off"></div>
 									</div>
 								</div>
 							</c:forEach>
