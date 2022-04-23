@@ -6,94 +6,78 @@
 package control;
 
 import dao.DAO;
+import entity.Item;
+import entity.Order;
 import entity.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author trinh
- */
-@WebServlet(name = "OrderControl", urlPatterns = {"/order"})
+@WebServlet(name = "OrderControl", urlPatterns = { "/order" })
 public class OrderControl extends HttpServlet {
+	List<Item> listItems;
+	DAO dao = new DAO();
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        Cookie arr[] = request.getCookies();
-        List<Product> list = new ArrayList<Product>();
-        DAO dao = new DAO();
-        for (Cookie o : arr) {
-            if (o.getName().equals("id")) {
-                String txt[] = o.getValue().split(",");
-                for (String s : txt) {
-                    list.add(dao.getProductByID(s));
-                }
-            }
-        }
-        for (int i = 0; i < list.size(); i++) {
-            int count = 1;
-            for (int j = i+1; j < list.size(); j++) {
-                if(list.get(i).getId() == list.get(j).getId()){
-                    count++;
-                    list.remove(j);
-                    j--;
-                    list.get(i).setAmount(count);
-                }
-            }
-        }
-        for (Cookie o : arr) {
-            o.setMaxAge(0);
-            response.addCookie(o);
-        }
-        response.sendRedirect("Home.jsp");
-    }
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+	}
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+		HttpSession session = request.getSession();
+
+		ServletOutputStream out = response.getOutputStream();
+
+		if (session.getAttribute("order") != null) {
+			Order order = (Order) session.getAttribute("order");
+			listItems = order.getItems();
+			for(int i= 0; i< listItems.size(); i++) {
+				String namesp = listItems.get(i).getProduct().getName();
+				
+				double pricesp =listItems.get(i).getProduct().getPrice();
+				String pricespcv = Double.toString(pricesp);
+				
+				int amount =listItems.get(i).getQuantity();
+				dao.insertOrder( namesp,pricespcv,amount);
+						
+			}
+			
+
+		} else {
+			out.println("<html>");
+			out.println("<head><title>22222</title></head>");
+
+			out.println("<body>");
+			out.println("<h3>Hello World</h3>");
+			out.println("This is my first Servlet");
+			out.println("</body>");
+			out.println("<html>");
+		}
+
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		processRequest(request, response);
+	}
+
+	@Override
+	public String getServletInfo() {
+		return "Short description";
+	}// </editor-fold>
 
 }
