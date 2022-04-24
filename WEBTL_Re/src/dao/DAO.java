@@ -312,7 +312,7 @@ public class DAO {
 
     public void singup(String user, String pass) {
         String query = "insert into account\n"
-                + "values(?,?,0,0)";
+                + "values(?,?,1,0)";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
