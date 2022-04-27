@@ -35,8 +35,7 @@
 							<li class="header__top-item"><a class="header__top-link"
 								href="#">Manager Account</a></li>
 						</c:if>
-						
-						<c:if test="${sessionScope.acc.isAdmin == 1}">
+						<c:if test="${sessionScope.acc.isSell == 1}">
 							<li class="header__top-item"><a class="header__top-link"
 								href="manager">Manager Product</a></li>
 						</c:if>

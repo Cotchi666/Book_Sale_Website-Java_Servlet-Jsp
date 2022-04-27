@@ -4,7 +4,6 @@ package dao;
 import context.DBContext;
 import entity.Account;
 import entity.Category;
-import entity.Order;
 import entity.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -312,7 +311,7 @@ public class DAO {
 
     public void singup(String user, String pass) {
         String query = "insert into account\n"
-                + "values(?,?,1,0)";
+                + "values(?,?,0,0)";
         try {
             conn = new DBContext().getConnection();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -389,21 +388,5 @@ public class DAO {
             System.out.println(o);
 		}
 	}
-    public void insertOrder(String name, String price, int amount) {
-        String query = "INSERT [dbo].[Order] \n"
-                + "([name], [price], [Amount])\n"
-                + "VALUES(?,?,?)";
-        try {
-            conn = new DBContext().getConnection();//mo ket noi voi sql
-            ps = conn.prepareStatement(query);
-            ps.setString(1, name);
-            ps.setString(2, price);
-            ps.setInt(3, amount);
-          
-            ps.executeUpdate();
-        } catch (Exception e) {
-        }
-    }
-
 
 }
