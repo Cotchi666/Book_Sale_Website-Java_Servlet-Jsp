@@ -96,10 +96,10 @@
 					<button class="cart__foot-update-btn">Cập nhật giỏ hàng</button>
 				</div>
 
-				<p class="col-3 col-lg-3 col-sm-3 cart__foot-total">Tổng cộng:</p>
+				
 
 				<span class="col-3 col-lg-3 col-sm-3 cart__foot-price">
-					${sessionScope.cart.value.quantity * sessionScope.cart.value.price}
+					
 					<c:choose>
 						<c:when test="${sessionScope.cart != null}">
 							<c:if test="${sessionScope.acc != null}">

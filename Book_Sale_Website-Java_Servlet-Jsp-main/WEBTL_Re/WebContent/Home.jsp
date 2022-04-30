@@ -303,7 +303,7 @@
 
 										<div class="product__panel-price">
 											<span class="product__panel-price-old"> </span> <span
-												class="product__panel-price-current"> ${o.price} đ </span>
+												class="product__panel-price-current"> ${o.price} $ </span>
 										</div>
 
 										<div class="product__panel-price-sale-off"></div>
@@ -350,7 +350,7 @@
 								<span
 									class="product__panel-price-old product__panel-price-old-hide">
 
-								</span> <span class="product__panel-price-current"> ${o.price}đ
+								</span> <span class="product__panel-price-current"> ${o.price}$
 								</span>
 							</div>
 						</div>

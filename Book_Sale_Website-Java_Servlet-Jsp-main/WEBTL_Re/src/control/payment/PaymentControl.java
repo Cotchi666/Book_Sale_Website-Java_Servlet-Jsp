@@ -71,7 +71,7 @@ public class PaymentControl extends HttpServlet {
 				// do what you have to do here
 				// In your case, another loop.
 			}
-			session.invalidate();
+			session.removeAttribute("cart");
 			response.sendRedirect("home");
 		}
 

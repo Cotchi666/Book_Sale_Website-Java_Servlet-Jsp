@@ -83,7 +83,7 @@
 							</div>
 
 							<div class="product__main-info-price">
-								<span class="product__main-info-price-current"> ${product.price}
+								<span class="product__main-info-price-current"> ${product.price}$
 								</span>
 							</div>
 
